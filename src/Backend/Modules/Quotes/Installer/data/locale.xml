@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<locale>
+  <Backend>
+    <Core>
+      <item type="label" name="Quotes">
+        <translation language="nl"><![CDATA[citaten]]></translation>
+        <translation language="fr"><![CDATA[citations]]></translation>
+      </item>
+      <item type="label" name="AllQuotes">
+        <translation language="nl"><![CDATA[alle citaten]]></translation>
+        <translation language="fr"><![CDATA[touts aléatoires]]></translation>
+      </item>
+      <item type="label" name="RandomQuote">
+        <translation language="nl"><![CDATA[willekeurig citaat]]></translation>
+        <translation language="fr"><![CDATA[citation aléatoire]]></translation>
+      </item>
+    </Core>
+    <Quotes>
+      <item type="label" name="Quote">
+        <translation language="nl"><![CDATA[citaat]]></translation>
+        <translation language="fr"><![CDATA[citation]]></translation>
+      </item>
+      <item type="label" name="AddQuote">
+        <translation language="nl"><![CDATA[quote toevoegen ]]></translation>
+        <translation language="fr"><![CDATA[ajouter une citation]]></translation>
+      </item>
+    </Quotes>
+  </Backend>
+</locale>

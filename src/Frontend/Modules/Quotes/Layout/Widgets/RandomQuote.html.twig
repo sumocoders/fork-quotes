@@ -1,0 +1,13 @@
+{% if quote %}
+  <blockquote>
+    <div class="row">
+      <div class="col-sm-4">
+        <img src="{{ quote.imageDirectoryUrl }}/x150/{{ quote.image }}" alt="{{ quote.name }}" class="img-responsive">
+      </div>
+      <div class="col-sm-8">
+        {{ quote.quote|raw }}
+        -- {{ quote.name }}
+      </div>
+    </div>
+  </blockquote>
+{% endif %}

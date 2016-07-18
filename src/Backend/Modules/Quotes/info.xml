@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module>
+  <name>Quotes</name>
+  <version>1.0.0</version>
+  <requirements>
+    <minimum_version>4.0.0</minimum_version>
+  </requirements>
+  <description>
+    <![CDATA[
+    A module to show quotes
+    ]]>
+  </description>
+  <authors>
+    <author>
+      <name><![CDATA[Dylan Moerman]]></name>
+      <url><![CDATA[http://www.sumocoders.be]]></url>
+    </author>
+  </authors>
+</module>
