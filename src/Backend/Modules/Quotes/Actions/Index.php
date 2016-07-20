@@ -7,6 +7,7 @@ use Backend\Core\Engine\Base\ActionIndex;
 use Backend\Core\Engine\DataGridDB;
 use Backend\Core\Engine\Language;
 use Backend\Core\Engine\Model;
+use SpoonFilter;
 
 final class Index extends ActionIndex
 {
@@ -28,6 +29,14 @@ final class Index extends ActionIndex
 
         // check if this action is allowed
         if (Authentication::isAllowedAction('Edit')) {
+            // strip html form quote to fix layout issues
+            $this->dataGrid->setColumnFunction(
+                [new SpoonFilter(), 'stripHTML'],
+                ['[quote]'],
+                'quote',
+                true
+            );
+
             // add column
             $this->dataGrid->addColumn(
                 'edit',

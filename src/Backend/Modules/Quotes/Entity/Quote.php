@@ -43,8 +43,16 @@ final class Quote
      * @param string|null $image
      * @param int|null $modulesExtrasId
      */
-    private function __construct($name, $quote, $createdOn, $editedOn, $language, $image, $id = null, $modulesExtrasId = null)
-    {
+    private function __construct(
+        $name,
+        $quote,
+        $createdOn,
+        $editedOn,
+        $language,
+        $image = null,
+        $id = null,
+        $modulesExtrasId = null
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->quote = $quote;
@@ -62,7 +70,7 @@ final class Quote
      *
      * @return Quote
      */
-    public static function create($name, $quote)
+    public static function create($name, $quote, $image = null)
     {
         return new self(
             $name,
