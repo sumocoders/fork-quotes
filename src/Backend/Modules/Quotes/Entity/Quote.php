@@ -39,8 +39,8 @@ final class Quote
      * @param string $createdOn
      * @param string $editedOn
      * @param string $language
-     * @param int|null $id
      * @param string|null $image
+     * @param int|null $id
      * @param int|null $modulesExtrasId
      */
     private function __construct(
