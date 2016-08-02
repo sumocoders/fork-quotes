@@ -3,24 +3,29 @@
   <Backend>
     <Core>
       <item type="label" name="Quotes">
+        <translation language="en"><![CDATA[quotes]]></translation>
         <translation language="nl"><![CDATA[citaten]]></translation>
         <translation language="fr"><![CDATA[citations]]></translation>
       </item>
       <item type="label" name="AllQuotes">
+        <translation language="en"><![CDATA[all quotes]]></translation>
         <translation language="nl"><![CDATA[alle citaten]]></translation>
         <translation language="fr"><![CDATA[touts aléatoires]]></translation>
       </item>
       <item type="label" name="RandomQuote">
+        <translation language="en"><![CDATA[random quote]]></translation>
         <translation language="nl"><![CDATA[willekeurig citaat]]></translation>
         <translation language="fr"><![CDATA[citation aléatoire]]></translation>
       </item>
     </Core>
     <Quotes>
       <item type="label" name="Quote">
+        <translation language="en"><![CDATA[quote]]></translation>
         <translation language="nl"><![CDATA[citaat]]></translation>
         <translation language="fr"><![CDATA[citation]]></translation>
       </item>
       <item type="label" name="AddQuote">
+        <translation language="en"><![CDATA[add quote]]></translation>
         <translation language="nl"><![CDATA[quote toevoegen ]]></translation>
         <translation language="fr"><![CDATA[ajouter une citation]]></translation>
       </item>
