@@ -1,4 +1,4 @@
 {% for quote in quotes %}
-  <blockquote>{{ quote.quote }}</blockquote>
-  <p>{{ quote.name }}</p>
+  <blockquote>{{ quote.quote|raw }}</blockquote>
+  <p>{{ quote.name|raw }}</p>
 {% endfor %}
