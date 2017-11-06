@@ -7,7 +7,7 @@ use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
 
 final class RandomQuote extends FrontendBaseWidget
 {
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
         $this->loadTemplate();
@@ -19,7 +19,7 @@ final class RandomQuote extends FrontendBaseWidget
         $quote = $this->get('quotes_repository')->getRandomQuote();
 
         if ($quote instanceof Quote) {
-            $this->tpl->assign('quote', $quote);
+            $this->template->assign('quote', $quote);
         }
     }
 }

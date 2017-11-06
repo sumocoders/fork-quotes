@@ -6,7 +6,7 @@ use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
 
 final class SingleQuote extends FrontendBaseWidget
 {
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
         $this->loadTemplate();
@@ -17,6 +17,6 @@ final class SingleQuote extends FrontendBaseWidget
     {
         $quote = $this->get('quotes_repository')->find($this->data['id']);
 
-        $this->tpl->assign('quote', $quote);
+        $this->template->assign('quote', $quote);
     }
 }

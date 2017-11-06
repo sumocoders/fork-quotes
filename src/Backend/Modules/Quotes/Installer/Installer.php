@@ -3,6 +3,7 @@
 namespace Backend\Modules\Quotes\Installer;
 
 use Backend\Core\Installer\ModuleInstaller;
+use Common\ModuleExtraType;
 
 final class Installer extends ModuleInstaller
 {
@@ -10,8 +11,8 @@ final class Installer extends ModuleInstaller
     {
         $this->addModule('Quotes');
 
-        $this->importSQL(dirname(__FILE__) . '/data/install.sql');
-        $this->importLocale(dirname(__FILE__) . '/data/locale.xml');
+        $this->importSQL(dirname(__FILE__) . '/Data/install.sql');
+        $this->importLocale(dirname(__FILE__) . '/Data/locale.xml');
 
         $this->setModuleRights(1, $this->getModule());
         $this->setActionRights(1, $this->getModule(), 'Index');
@@ -19,13 +20,13 @@ final class Installer extends ModuleInstaller
         $this->setActionRights(1, $this->getModule(), 'Edit');
         $this->setActionRights(1, $this->getModule(), 'Delete');
 
-        $this->insertExtra($this->getModule(), 'widget', 'RandomQuote', 'RandomQuote');
-        $this->insertExtra($this->getModule(), 'widget', 'AllQuotes', 'AllQuotes');
+        $this->insertExtra($this->getModule(), ModuleExtraType::widget(), 'RandomQuote', 'RandomQuote');
+        $this->insertExtra($this->getModule(), ModuleExtraType::widget(), 'AllQuotes', 'AllQuotes');
 
         $navigationModulesId = $this->setNavigation(null, 'Modules');
         $this->setNavigation(
             $navigationModulesId,
-            'Quotes',
+            $this->getModule(),
             'quotes/index',
             ['quotes/add', 'quotes/edit']
         );

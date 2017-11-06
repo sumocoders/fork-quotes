@@ -4,6 +4,7 @@ namespace Backend\Modules\Quotes\Repository;
 
 use Backend\Core\Engine\Model;
 use Backend\Modules\Quotes\Entity\Quote;
+use Common\ModuleExtraType;
 use SpoonDatabase;
 
 final class QuotesRepository
@@ -131,26 +132,21 @@ final class QuotesRepository
     private function addToModulesExtras(Quote $quote)
     {
         return $quote->setModulesExtrasId(
-            $this->database->insert(
-                'modules_extras',
+            Model::insertExtra(
+                ModuleExtraType::widget(),
+                'Quotes',
+                'SingleQuote',
+                'SingleQuote',
                 [
-                    'module' => 'Quotes',
-                    'type' => 'widget',
-                    'label' => 'SingleQuote',
-                    'action' => 'SingleQuote',
-                    'data' => serialize(
+                    'id' => $quote->getId(),
+                    'extra_label' => $quote->getName(),
+                    'language' => $quote->getLanguage(),
+                    'edit_url' => Model::createURLForAction(
+                        'Edit',
+                        'Quotes',
+                        $quote->getLanguage(),
                         [
                             'id' => $quote->getId(),
-                            'extra_label' => $quote->getName(),
-                            'language' => $quote->getLanguage(),
-                            'edit_url' => Model::createURLForAction(
-                                'Edit',
-                                'Quotes',
-                                $quote->getLanguage(),
-                                [
-                                    'id' => $quote->getId(),
-                                ]
-                            ),
                         ]
                     ),
                 ]

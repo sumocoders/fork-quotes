@@ -2,4 +2,4 @@ services:
   quotes_repository:
     class: Backend\Modules\Quotes\Repository\QuotesRepository
     arguments:
-      - @database
+      - "@database"

@@ -8,13 +8,13 @@ use Backend\Modules\Quotes\Entity\Quote;
 
 final class Delete extends ActionDelete
 {
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
 
         try {
             /** @var Quote $quote */
-            $quote = $this->get('quotes_repository')->find($this->getParameter('id', 'int'));
+            $quote = $this->get('quotes_repository')->find($this->getRequest()->query->getInt('id'));
         } catch (\InvalidArgumentException $e) {
             $this->redirect(
                 Model::createURLForAction(
