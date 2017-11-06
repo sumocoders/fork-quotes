@@ -4,14 +4,14 @@ namespace Backend\Modules\Quotes\Actions;
 
 use Backend\Core\Engine\Authentication;
 use Backend\Core\Engine\Base\ActionIndex;
-use Backend\Core\Engine\DataGridDB;
-use Backend\Core\Engine\Language;
+use Backend\Core\Engine\DataGridDatabase;
+use Backend\Core\Language\Language;
 use Backend\Core\Engine\Model;
 use SpoonFilter;
 
 final class Index extends ActionIndex
 {
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
         $this->loadDataGrid();
@@ -22,7 +22,7 @@ final class Index extends ActionIndex
     private function loadDataGrid()
     {
         // create the datagrid
-        $this->dataGrid = new DataGridDB(
+        $this->dataGrid = new DataGridDatabase(
             $this->get('quotes_repository')->getDataGridQuery(),
             ['language' => Language::getWorkingLanguage()]
         );
@@ -47,6 +47,6 @@ final class Index extends ActionIndex
             );
         }
 
-        $this->tpl->assign('dataGrid', (string) $this->dataGrid->getContent());
+        $this->template->assign('dataGrid', (string) $this->dataGrid->getContent());
     }
 }

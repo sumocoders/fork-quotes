@@ -2,12 +2,11 @@
 
 namespace Frontend\Modules\Quotes\Widgets;
 
-use Backend\Modules\Quotes\Entity\Quote;
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
 
 final class AllQuotes extends FrontendBaseWidget
 {
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
         $this->loadTemplate();
@@ -18,6 +17,6 @@ final class AllQuotes extends FrontendBaseWidget
     {
         $quotes = $this->get('quotes_repository')->getAllQuotes();
 
-        $this->tpl->assign('quotes', $quotes);
+        $this->template->assign('quotes', $quotes);
     }
 }

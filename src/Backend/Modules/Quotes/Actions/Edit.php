@@ -9,12 +9,12 @@ use Backend\Modules\Quotes\Entity\Quote;
 
 final class Edit extends ActionEdit
 {
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
         try {
             /** @var Quote $quote */
-            $quote = $this->get('quotes_repository')->find($this->getParameter('id', 'int'));
+            $quote = $this->get('quotes_repository')->find($this->getRequest()->query->getInt('id'));
         } catch (\InvalidArgumentException $e) {
             $this->redirect(
                 Model::createURLForAction(
@@ -29,7 +29,7 @@ final class Edit extends ActionEdit
 
             return;
         }
-        $this->tpl->assign('quote', $quote->toArray());
+        $this->template->assign('quote', $quote->toArray());
 
         $form = new QuoteType('edit', $quote);
         if ($form->handle()) {
@@ -51,7 +51,7 @@ final class Edit extends ActionEdit
             return;
         }
 
-        $form->parse($this->tpl);
+        $form->parse($this->template);
 
         $this->parse();
         $this->display();

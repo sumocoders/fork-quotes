@@ -8,7 +8,7 @@ use Backend\Modules\Quotes\Form\QuoteType;
 
 final class Add extends ActionAdd
 {
-    public function execute()
+    public function execute(): void
     {
         parent::execute();
 
@@ -32,7 +32,7 @@ final class Add extends ActionAdd
             return;
         }
 
-        $form->parse($this->tpl);
+        $form->parse($this->template);
 
         $this->parse();
         $this->display();

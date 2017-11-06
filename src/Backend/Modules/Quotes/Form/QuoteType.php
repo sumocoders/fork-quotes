@@ -4,7 +4,7 @@ namespace Backend\Modules\Quotes\Form;
 
 use Backend\Core\Engine\Form;
 use Backend\Core\Engine\FormImage;
-use Backend\Core\Engine\Language;
+use Backend\Core\Language\Language;
 use Backend\Core\Engine\TwigTemplate;
 use Backend\Modules\Quotes\Entity\Quote;
 

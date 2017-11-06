@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module>
   <name>Quotes</name>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
   <requirements>
-    <minimum_version>4.0.0</minimum_version>
+    <minimum_version>5.0.6</minimum_version>
   </requirements>
   <description>
     <![CDATA[
@@ -12,7 +12,7 @@
   </description>
   <authors>
     <author>
-      <name><![CDATA[Dylan Moerman]]></name>
+      <name><![CDATA[Stijn Vrolijk]]></name>
       <url><![CDATA[http://www.sumocoders.be]]></url>
     </author>
   </authors>
