@@ -204,7 +204,9 @@ final class Quote
      */
     public function getPreviewImage()
     {
-        return self::getImageDirectoryUrl('x150') . '/' . $this->image;
+        if ($this->image !== null){
+            return self::getImageDirectoryUrl('x150') . '/' . $this->image;
+        }
     }
 
     /**
