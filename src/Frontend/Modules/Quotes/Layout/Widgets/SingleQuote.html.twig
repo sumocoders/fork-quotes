@@ -1,22 +1,7 @@
-{% if quote %}
-  <blockquote>
-    <div class="row">
-    {% if quote.image %}
-      <div class="col-sm-4"> 
-        <img src="{{ quote.imageDirectoryUrl }}/x150/{{ quote.image }}" alt="{{ quote.name }}" class="img-responsive">
-      </div>
-      <div class="col-sm-8">
-        {{ quote.quote|raw }}
-        -- {{ quote.name }}
-      </div>
-    {% endif %}
-        
-    {% if not quote.image %}
-      <div class="col-sm-12">
-        {{ quote.quote|raw }}
-        -- {{ quote.name }}
-      </div>
-    {% endif %}
-    </div>
-  </blockquote>
-{% endif %}
+{% import 'Modules/Quotes/Layout/Templates/Quote.html.twig' as macro %}
+
+<section id="quotesSingleQuoteWidget" class="quotes quotes-widget">
+  {% if quote %}
+    {{ macro.quote(quote) }}
+  {% endif %}
+</section>

@@ -1,4 +1,7 @@
-{% for quote in quotes %}
-  <blockquote>{{ quote.quote|raw }}</blockquote>
-  <p>{{ quote.name }}</p>
-{% endfor %}
+{% import 'Modules/Quotes/Layout/Templates/Quote.html.twig' as macro %}
+
+<section id="quotesAllQuotesWidget" class="quotes quotes-widget">
+  {% for quote in quotes %}
+    {{ macro.quote(quote) }}
+  {% endfor %}
+</section>
