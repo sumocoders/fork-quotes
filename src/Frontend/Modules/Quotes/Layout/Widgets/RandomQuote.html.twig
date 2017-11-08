@@ -1,7 +1,7 @@
-{% import 'Modules/Quotes/Layout/Templates/Quote.html.twig' as macro %}
+{% import 'Modules/Quotes/Layout/Templates/Quote.html.twig' as quotesTemplates %}
 
 <section id="quotesRandomQuoteWidget" class="quotes quotes-widget">
   {% if quote %}
-    {{ macro.quote(quote) }}
+    {{ quotesTemplates.quote(quote) }}
   {% endif %}
 </section>
