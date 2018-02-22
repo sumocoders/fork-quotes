@@ -17,6 +17,6 @@ final class SingleQuote extends FrontendBaseWidget
     {
         $quote = $this->get('quotes_repository')->find($this->data['id']);
 
-        $this->template->assign('quote', $quote);
+        $this->template->assign('quote', $quote->isVisible() ? $quote : []);
     }
 }

@@ -27,7 +27,7 @@ final class QuotesRepository
      */
     public function getDataGridQuery()
     {
-        return 'SELECT id, name, quote, created_on, edited_on
+        return 'SELECT id, name, quote, author, visible, created_on, edited_on
                 FROM quotes WHERE language = :language';
     }
 
@@ -73,7 +73,7 @@ final class QuotesRepository
      */
     public function getAllQuotes()
     {
-        $quotes = (array) $this->database->getRecords('SELECT * FROM quotes');
+        $quotes = (array) $this->database->getRecords('SELECT * FROM quotes WHERE visible = 1');
 
         return array_map(
             function (array $quote) {
@@ -90,7 +90,7 @@ final class QuotesRepository
      */
     public function getRandomQuote()
     {
-        $randomId = (int) $this->database->getVar('SELECT id FROM quotes ORDER BY RAND() LIMIT 1');
+        $randomId = (int) $this->database->getVar('SELECT id FROM quotes WHERE visible = 1 ORDER BY RAND() LIMIT 1');
 
         return $this->find($randomId);
     }

@@ -3,12 +3,12 @@
     <div class="row align-items-center">
       {% if quote.image %}
         <div class="col-2">
-          <img src="{{ quote.imageDirectoryUrl }}/x150/{{ quote.image }}" alt="{{ quote.name }}" class="img-responsive">
+          <img src="{{ quote.imageDirectoryUrl }}/x150/{{ quote.image }}" alt="{{ quote.author }}" class="img-responsive">
         </div>
       {% endif %}
       <div class="{% if quote.image %} col-10{% else %} col-12{% endif %}">
         {{ quote.quote|raw }}
-        <cite>{{ quote.name }}</cite>
+        <cite>{{ quote.author }}</cite>
       </div>
     </div>
   </blockquote>

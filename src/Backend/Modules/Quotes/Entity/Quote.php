@@ -18,8 +18,14 @@ final class Quote
     /** @var string $quote */
     private $quote;
 
-    /** @var string $image */
+    /** @var string|null $image */
     private $image;
+
+    /** @var string $author */
+    private $author;
+
+    /** @var bool $visible */
+    private $visible;
 
     /** @var DateTime $createdOn */
     private $createdOn;
@@ -40,6 +46,8 @@ final class Quote
      * @param string $editedOn
      * @param string $language
      * @param string|null $image
+     * @param string $author
+     * @param bool $visible
      * @param int|null $id
      * @param int|null $modulesExtrasId
      */
@@ -49,7 +57,9 @@ final class Quote
         $createdOn,
         $editedOn,
         $language,
+        $author,
         $image = null,
+        $visible = true,
         $id = null,
         $modulesExtrasId = null
     ) {
@@ -57,6 +67,8 @@ final class Quote
         $this->name = $name;
         $this->quote = $quote;
         $this->image = $image;
+        $this->author = $author;
+        $this->visible = $visible;
         $this->createdOn = $createdOn;
         $this->editedOn = $editedOn;
         $this->language = $language;
@@ -66,11 +78,13 @@ final class Quote
     /**
      * @param string $name
      * @param string $quote
-     * @param string $image
+     * @param string $author
+     * @param string|null $image
+     * @param bool $visible
      *
      * @return Quote
      */
-    public static function create($name, $quote, $image = null)
+    public static function create($name, $quote, $author, $image = null, $visible = true)
     {
         return new self(
             $name,
@@ -78,7 +92,9 @@ final class Quote
             new DateTime(),
             new DateTime(),
             Language::callLanguageFunction('getWorkingLanguage'),
-            $image
+            $author,
+            $image,
+            $visible
         );
     }
 
@@ -115,13 +131,15 @@ final class Quote
     /**
      * @param string $name
      * @param string $quote
+     * @param string|null $author
      *
      * @return Quote
      */
-    public function changeQuote($name, $quote)
+    public function changeQuote($name, $quote, $author = null)
     {
         $this->name = $name;
         $this->quote = $quote;
+        $this->author = $author;
         $this->editedOn = new DateTime();
 
         return $this;
@@ -152,6 +170,8 @@ final class Quote
             'name' => $this->name,
             'quote' => $this->quote,
             'image' => $this->image,
+            'author' => $this->author,
+            'visible' => $this->visible,
             'created_on' => $this->createdOn,
             'edited_on' => $this->editedOn,
             'language' => $this->language,
@@ -197,6 +217,22 @@ final class Quote
     public function getQuote()
     {
         return $this->quote;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isVisible(): bool
+    {
+        return $this->visible;
     }
 
     /**
@@ -268,9 +304,19 @@ final class Quote
             DateTime::createFromFormat('Y-m-d H:i:s', $quoteRecord['created_on']),
             DateTime::createFromFormat('Y-m-d H:i:s', $quoteRecord['edited_on']),
             $quoteRecord['language'],
+            $quoteRecord['author'],
             $quoteRecord['image'],
+            (bool) $quoteRecord['visible'],
             $quoteRecord['id'],
             $quoteRecord['modules_extras_id']
         );
+    }
+
+    /**
+     * @param bool $visible
+     */
+    public function changeVisibility($visible = true)
+    {
+        $this->visible = $visible;
     }
 }

@@ -12,6 +12,12 @@
         </label>
         {% form_field name %} {% form_field_error name %}
       </div>
+      <div class="form-group">
+        <label for="visible" class="control-label">
+          {% form_field visible %} {{ 'lbl.VisibleOnSite'|trans|capitalize }}
+        </label>
+        {% form_field_error visible %}
+      </div>
       <div class="panel panel-default panel-editor">
         <div class="panel-heading">
           <label for="quote" class="control-label">
@@ -21,6 +27,17 @@
         </div>
         <div class="panel-body">
           {% form_field quote %} {% form_field_error quote %}
+        </div>
+      </div>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <label for="author" class="control-label">
+            {{ 'lbl.Author'|trans|capitalize }}
+            <abbr data-toggle="tooltip" title="{{ 'lbl.RequiredField'|trans|capitalize }}">*</abbr><br>
+          </label>
+        </div>
+        <div class="panel-body">
+          {% form_field author %} {% form_field_error author %}
         </div>
       </div>
       <div class="panel panel-default">

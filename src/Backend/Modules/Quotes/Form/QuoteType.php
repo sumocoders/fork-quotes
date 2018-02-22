@@ -47,11 +47,21 @@ final class QuoteType
             null,
             'form-control title',
             'form-control danger title'
-        );
+        )->makeRequired();
+
+        $this->form->addText(
+            'author',
+            $this->quote instanceof Quote ? $this->quote->getAuthor() : null
+        )->makeRequired();
 
         $this->form->addEditor(
             'quote',
             $this->quote instanceof Quote ? $this->quote->getQuote() : null
+        )->makeRequired();
+
+        $this->form->addCheckbox(
+            'visible',
+            $this->quote instanceof Quote ? $this->quote->isVisible() : true
         );
 
         $this->form->addImage('image');
@@ -78,6 +88,7 @@ final class QuoteType
 
         $fields['name']->isFilled(Language::err('FieldIsRequired'));
         $fields['quote']->isFilled(Language::err('FieldIsRequired'));
+        $fields['author']->isFilled(Language::err('FieldIsRequired'));
 
         return $this->form->isCorrect();
     }
@@ -95,8 +106,11 @@ final class QuoteType
         if ($this->quote instanceof Quote) {
             $this->quote->changeQuote(
                 $fields['name']->getValue(),
-                $fields['quote']->getValue()
+                $fields['quote']->getValue(),
+                $fields['author']->getValue()
             );
+
+            $this->quote->changeVisibility($fields['visible']->isChecked());
 
             if ($fields['image']->isFilled()) {
                 $this->quote->deleteImage();
@@ -110,7 +124,9 @@ final class QuoteType
         $this->quote = Quote::create(
             $fields['name']->getValue(),
             $fields['quote']->getValue(),
-            $this->handleImage($fields['image'])
+            $fields['author']->getValue(),
+            $this->handleImage($fields['image']),
+            $fields['visible']->isChecked()
         );
 
         return true;
