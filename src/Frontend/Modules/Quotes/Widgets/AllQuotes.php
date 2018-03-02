@@ -3,6 +3,7 @@
 namespace Frontend\Modules\Quotes\Widgets;
 
 use Frontend\Core\Engine\Base\Widget as FrontendBaseWidget;
+use Frontend\Core\Language\Locale;
 
 final class AllQuotes extends FrontendBaseWidget
 {
@@ -15,7 +16,7 @@ final class AllQuotes extends FrontendBaseWidget
 
     private function parse()
     {
-        $quotes = $this->get('quotes_repository')->getAllQuotes();
+        $quotes = $this->get('quotes_repository')->getAllQuotes(Locale::frontendLanguage());
 
         $this->template->assign('quotes', $quotes);
     }
