@@ -4,6 +4,7 @@ namespace Backend\Modules\Quotes\Repository;
 
 use Backend\Core\Engine\Model;
 use Backend\Modules\Quotes\Entity\Quote;
+use Common\Locale;
 use Common\ModuleExtraType;
 use SpoonDatabase;
 
@@ -69,11 +70,18 @@ final class QuotesRepository
     /**
      * Returns all quotes.
      *
+     * @param Locale $locale
+     *
      * @return Quote[]
      */
-    public function getAllQuotes()
+    public function getAllQuotes(Locale $locale)
     {
-        $quotes = (array) $this->database->getRecords('SELECT * FROM quotes');
+        $quotes = (array) $this->database->getRecords(
+            'SELECT * FROM quotes WHERE language = :language',
+            [
+                'language' => $locale,
+            ]
+        );
 
         return array_map(
             function (array $quote) {
@@ -86,11 +94,22 @@ final class QuotesRepository
     /**
      * Returns a random quote.
      *
+     * @param Locale $locale
+     *
      * @return Quote
      */
-    public function getRandomQuote()
+    public function getRandomQuote(Locale $locale)
     {
-        $randomId = (int) $this->database->getVar('SELECT id FROM quotes ORDER BY RAND() LIMIT 1');
+        $randomId = (int) $this->database->getVar(
+            'SELECT id 
+             FROM quotes 
+             WHERE language = :language
+             ORDER BY RAND() 
+             LIMIT 1',
+            [
+                'language' => $locale,
+            ]
+        );
 
         return $this->find($randomId);
     }
