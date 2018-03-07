@@ -3,3 +3,4 @@ services:
     class: Backend\Modules\Quotes\Repository\QuotesRepository
     arguments:
       - "@database"
+    public: true
